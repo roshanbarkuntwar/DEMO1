@@ -1,0 +1,519 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout" th:with="title='Hello, template'">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<th:block layout:fragment="content">
+
+<style>
+
+.wtree {
+    margin-left: -29px;
+	font-family: arial, verdana, tahoma;
+    font-size: 13px;
+}
+.wtree:after{
+   content: '';
+    position: absolute;
+    top: 19px;
+    right: 50%;
+    width: 43%;
+    height: 20px;
+    border-top: 1px solid #0060a3;
+}
+.wtree p {
+   list-style-type: none;
+    margin: 10px 0 17px 10px;
+    position: relative;
+    max-width: 154px;
+	text-overflow: ellipsis;
+    text-align: left;
+	cursor:pointer;
+}
+.wtree p:before{
+    content: "";
+    counter-increment: item;
+    position: absolute;
+    top: -10px;
+    left: -12px;
+    border-left: 1px solid #0060a3;
+    border-bottom: 1px solid #0060a3;
+    width: 11px;
+    height: 30px;
+	}
+.wtree p:after {
+   position: absolute;
+    content: "";
+    top: 19px;
+    left: -12px;
+    border-left: 1px solid #0060a3;
+    border-top: 1px solid #0060a3;
+    width: 11px;
+    height: 100%;
+}
+
+
+
+
+
+
+
+
+
+ 
+.popover[role='tooltip']{
+  border-right: 2px solid #66b7f1 !important;
+    border-left: 2px solid #59b6f9 !important;
+    border-top: 2px solid #6cbaf2;
+    border-bottom: 2px solid #6cbaf2;
+    font-size: 18px;
+}
+ngb-popover-window[role='tooltip'] .popover-header{ 
+    background-color: #f7f7f7 !important;
+    text-align: right;
+    padding: 2px 5px 2px 0px !important;
+    font-size:18px;
+  }
+    
+
+
+
+.newone-navbar {
+justify-content: center;
+position: relative;
+  padding: 0;
+  border: 0 none;
+  margin: -70px auto;
+  width: 100%;
+  min-height: auto;
+}
+
+.newone-navbar ul {
+ padding: 0;
+  border: 0 none;
+  position: relative;
+  padding-top: 20px; 
+}
+
+.newone-navbar li {
+ padding: 0;
+  border: 0 none;
+  position: relative;
+  padding: 20px 0px 0 0px; 
+  float: left; 
+  
+  text-align: center;
+  list-style-type: none; 
+}
+
+.newone-navbar li::before, .newone-navbar li::after{
+  content: '';
+    position: absolute;
+    top: 0;
+    right: 45%;
+    width: 54%;
+    height: 20px;
+    border-top: 5px solid #0060a3;
+}
+
+.newone-navbar li::after{
+  left: 50%;
+  right: auto; 
+  
+  border-left: 5px solid #0060a3;
+}
+
+.newone-navbar li:only-child::after, .newone-navbar li:only-child::before {
+  content: '';
+  display: none;
+}
+
+.newone-navbar li:only-child{ padding-top: 0;}
+.newone-navbar li:first-child::before, .newone-navbar li:last-child::after{
+  border: 0 none;
+}
+
+.newone-navbar li:last-child::before{
+  border-right: 5px solid #0060a3;
+  border-radius: 0 5px 0 0;
+}
+
+.newone-navbar li:first-child::after{
+    border-radius: 5px 0 0 0;
+}
+.newone-navbar ul ul::before{
+  content: '';
+  position: absolute; top: 0; left: 50%;
+  border-left: 5px solid #0060a3;
+  width: 0; 
+  height: 20px;
+}
+
+.newone-navbar li a{
+ padding: 0;
+     margin-right: -10px;
+  border: 0 none;
+  display: inline-block;
+  padding: 0px 10px;
+ 
+
+  border-radius: 5px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #3e3a3a;
+  font-family: arial, verdana, tahoma;
+  font-size: 11px;
+}
+
+
+
+.newone-navbar li a:hover+ul li::after, 
+.newone-navbar li a:hover+ul li::before, 
+.newone-navbar li a:hover+ul::before, 
+.newone-navbar li a:hover+ul ul::before{
+  content: '';
+  border-color: #0060a3;
+}
+
+
+.newone-navbar .box-pop{
+        position: absolute;
+    width: 300px;
+    border: 5px solid #c1c1c1;
+    padding: 5px 5px 5px 10px;
+    /* margin-top: 10px; */
+    margin: 15px 0px 0px -122px;
+    background: white;
+    border-radius: 10px;
+    color: #565656;
+    text-align: left;
+	
+}
+
+.newone-navbar .box-pop::before{
+    content: '';
+    position: absolute;
+    background: white;
+    width: 34px;
+    animation: revert;
+    height: 34px;
+    transform: rotate(43deg);
+    padding: 0px 0px 0px 0px;
+    margin: -13px 10px 0px 117px;
+    border-top: 5px solid #c1c1c1;
+    border-left: 5px solid #c1c1c1;
+    z-index: -1;
+	
+}
+.li:hover
+.box-pop{
+display:black;
+}
+
+.para{
+cursor: pointer;
+       margin-top: 0px;
+       box-shadow: 0px 0px 2px;
+    /* padding-left: 39px; */
+    border-bottom: 2px solid #003baf;
+    background: #e2efff;
+        padding: 5px 2px 5px 2px;
+    margin: 0px 2px 0px 2px;
+    color: #0060a3;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 600;
+}
+.para span {
+font-weight:500;
+}
+.para p{
+padding: 0px;
+    margin: 1px;
+    text-align: left;
+    color: black;
+    font-weight:700;
+	}
+	
+	.kpi-icon {
+    width: 75px;
+    height: 75px;
+    cursor: pointer;
+    background: linear-gradient(45deg, #092559, #4e8dff);
+    border-radius: 50%;
+}
+/* .para:hover{
+    font-size: 18px;
+    position: absolute;
+    z-index: 2;
+    margin: 0px 0px 0px -90px;
+    }
+ */
+</style>
+	<div class="right-section">
+
+		<div class="tab-section col-md-12 mt-3">
+
+			<ul class="nav nav-pills">
+				<li class="nav-item mr-5"><a class="nav-link active"
+					data-toggle="pill" href="#"><p>Bank 360 View</p> </a></li>
+
+			</ul>
+			<div class="clearfix"></div>
+		</div>
+		
+		
+		<div class="tab-content form-wrapper px-0 py-0">
+		
+		
+		<form id="treeDetails" class="px-2 py-2">
+
+
+
+
+			<div class="filter-section my-1 pt-1">
+				<div class="row sec-bottom">
+					<div class="col-lg-10 col-xl-11">
+						<div class="row form-group">
+						<div class="col-lg-3 text-right offset-2" >
+						<label style="font-weight: bold;">Select Entity/Bank Name :</label>
+						</div>
+							<div class="col-lg-3 ">
+								<select class="form-control" id="entity_code" name="entity_code" style="font-weight: bold;" onchange="searchTreeFilter()">
+									<option value="">-- Select Entity/Bank Name --</option>
+									<option th:each="entity : ${entityNameList.entrySet()}"
+										th:value="${entity.key}" th:text="${entity.value}"></option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</form>
+		
+		
+		
+		
+
+		<div th:fragment="ajaxtreediagramList">
+			<div class="tab-content form-wrapper px-0 py-0" id="dataSpan"  style="box-shadow:none; padding:0px;margin:0px;">
+
+				<div th:if="${new_entity_code } != null"> 
+				<div>
+				            
+				           
+				 			<span th:each="user,index_count:${maplist}"    
+								th:if="${user.key == new_entity_code}" > 
+								 <a  th:href="${website}" target="_blank" id="website"   th:value="${website}"  >
+ 							  <img th:src="@{'data:image/jpeg;base64,'+${user.value}}"    
+								   title="Bank Logo"  style="width: 100px;height: 100px;background: none;cursor: pointer;    
+								  box-shadow: 0 2px 12px 0 rgb(44 61 101 / 67%);margin-left:16px;border-radius: 50%;display: block;float: left;" /> 
+ 							  </a >  
+ 					</span> 
+						
+				<button    id="expand" onclick="expand()" type="button" class="form-btn float-right" data-toggle="collapse" 
+				data-target="#collapseExamplee , #collapseExamplee1 , #collapseExamplee2 , #collapseExamplee4 , #collapseExamplee5 , #collapseExamplee6 ,#collapseExamplee7 ,#collapseExamplee8 , #collapseExamplee9 ,#collapseExample11 , #collapseExample12 , #collapseExamplee3 , #collapseExample13 , #collapseExample14" 
+				role="button" aria-expanded="false" aria-controls="collapseExpand">
+								<i class="fa fa-expand" aria-hidden="true"></i> Expand All
+							</button>	
+							
+							<button  id="shrink" onclick="shrink()" type="button" class="form-btn float-right" data-toggle="collapse" 
+				data-
+="#collapseExamplee , #collapseExamplee1 , #collapseExamplee2 , #collapseExamplee4 , #collapseExamplee5 , #collapseExamplee6 ,#collapseExamplee7 ,#collapseExamplee8 , #collapseExamplee9 ,#collapseExample11 , #collapseExample12 , #collapseExamplee3 , #collapseExample13 , #collapseExample14" 
+				role="button" aria-expanded="false" aria-controls="collapseExpand" style="display:none">
+								<i class="fa fa-compress" aria-hidden="true"></i> Collapse
+							</button>
+							</div>
+				<nav class="nav newone-navbar" >
+					<ul>
+						<li><a data-toggle="collapse" href="#collapseExamplee" role="button" aria-expanded="false" aria-controls="collapseExample"> 
+							<span
+								th:each="user,index_count:${maplist}"
+								th:if="${user.key == new_entity_code}" > 
+								<div class="kpi-icon position-relative mx-3 d-flex align-self-center justify-content-center align-items-center"> 
+								<span>
+								<h3 style="color:yellow;" title="Entity Code" th:text="${user.key}"></h3> 
+								</span>
+								</div>
+							</span>
+							
+
+						</a> 
+							<ul class="collapse" id="collapseExamplee">
+							
+								<li><a data-toggle="collapse" href="#collapseExamplee1"
+									role="button" aria-expanded="false"
+									aria-controls="collapseExample1">
+									<img src="./static/images/tree-image/application.png"></a> 
+									<ul class="collapse" id="collapseExamplee1"  >
+										
+										
+										<li><a data-toggle="collapse" href="#collapseExamplee4"
+											role="button" aria-expanded="false"
+											aria-controls="collapseExample4">
+											<img src="./static/images/tree-image/api.png"></a>  
+										
+											<ul class="collapse" id="collapseExamplee4" th:each="app :${appList}" th:if="${app.application_type == 'apptype_01'}" >
+												
+									
+									
+												<div class="para" >
+													<p> Name : <span th:text="${app.app_name}"></span></p>
+													<p> URL : <span th:text="${app.local_app_url}"></span></p>
+													<p> Login Id : <span th:text="${app.login_id}"></span></p>
+													<p> Login Password : <span th:text="${app.login_password}"></span></p>
+												</div>
+											</ul>
+											</li>
+											
+										<li><a data-toggle="collapse" href="#collapseExamplee5"
+											role="button" aria-expanded="false"
+											aria-controls="collapseExample5">
+											<img src="./static/images/tree-image/web.png"></a>  
+											<ul class="collapse" id="collapseExamplee5" >
+												<li><a data-toggle="collapse" href="#collapseExample13"
+											role="button" aria-expanded="false"
+											aria-controls="collapseExample6">
+											<img src="./static/images/tree-image/3tb.png"></a>  
+													<ul   class="collapse" id="collapseExample13"  th:each="app :${appList}" th:if="${app.application_type == 'apptype_03' && app.app_name == 'taxcpc_3tb'}">
+														<div class="para"  >
+															<p>Name: <span th:text="${app.app_name}"></span></p>
+															<p>URL :  <span th:text="${app.local_app_url}"></span></p>
+															<p>Login Id : <span th:text="${app.login_id}"></span></p>
+															<p>Login Password : <span th:text="${app.login_password}"></span></p>
+														</div>
+													</ul></li>
+												<li><a data-toggle="collapse" href="#collapseExample14"
+											role="button" aria-expanded="false"
+											aria-controls="collapseExample6">
+											<img src="./static/images/tree-image/v2.png"></a>
+													<ul class="collapse" id="collapseExample14"  th:each="app :${appList}" th:if="${app.application_type == 'apptype_03' && app.app_name == 'taxcpc_v2'}">
+														<div class="para" >
+															<p>Name:<span th:text="${app.app_name}"></span></p>
+															<p>URl : <span th:text="${app.local_app_url}"></span></p>
+															<p>Login Id : <span th:text="${app.login_id}"></span></p>
+															<p>Login Password : <span th:text="${app.login_password}"></span></p>
+														</div>
+													</ul></li>
+											</ul></li>
+									
+										<li><a data-toggle="collapse" href="#collapseExamplee6"
+											role="button" aria-expanded="false"
+											aria-controls="collapseExample6">
+											<img src="./static/images/tree-image/jar.png">
+												</a>  
+														<ul  class="collapse" id="collapseExamplee6" th:each="app :${appList}" th:if="${app.application_type == 'apptype_02'}" >
+														<div class="para" >
+															<p>Jar Name: <span th:text="${app.jar_name}"></span></p>
+															<p>Jar Parameter : <span th:text="${app.jar_parameter}"></span></p>
+														</div>
+													</ul></li>
+										
+									
+									</ul></li>
+									
+									
+								<li><a data-toggle="collapse" href="#collapseExamplee2"
+									role="button" aria-expanded="false"
+									aria-controls="collapseExample2"><img
+										src="./static/images/tree-image/server.png"></a>  
+									<ul class="collapse" id="collapseExamplee2">
+										<li><a data-toggle="collapse" href="#collapseExamplee7"
+											role="button" aria-expanded="false"
+											aria-controls="collapseExample7"><img
+												src="./static/images/tree-image/apps.png"></a>  
+											<ul class="collapse" id="collapseExamplee7" th:each="server :${serverList}" th:if="${server.configuration_type} == 'ASC'">
+												<div class="para">
+													<p>
+														Application Server : <span th:text="${server.app_server_name == 'TMC'} ? 'TOMCAT' : '' " ></span>
+																			<span th:text="${server.app_server_name == 'WBL'} ? 'WEB LOGIC' : '' " ></span>
+																			<span th:text="${server.app_server_name == 'JBS'} ? 'JBOSS' : '' " ></span>
+														  
+													</p>
+													<p>IP : <span th:text="${server.app_server_ip}"></span></p>
+													<p>Port : <span th:text="${server.app_server_port}"></span></p>
+													<p>Tag Name : <span th:text="${server.app_server_tag_name}"></span></p>
+
+												</div>
+											</ul></li>
+										<li><a data-toggle="collapse" href="#collapseExamplee8"
+											role="button" aria-expanded="false"
+											aria-controls="collapseExample8">
+											<img src="./static/images/tree-image/webs.png"></a>  
+											<ul class="collapse" id="collapseExamplee8" th:each="server :${serverList}" th:if="${server.configuration_type} == 'WEBC'">
+												<div class="para">
+													<p>
+														Web Server : 	<span th:text="${server.app_server_name == 'TMC'} ? 'TOMCAT' : '' " ></span>
+																		<span th:text="${server.app_server_name == 'WBL'} ? 'WEB LOGIC' : '' " ></span>
+																		<span th:text="${server.app_server_name == 'JBS'} ? 'JBOSS' : '' " ></span>
+														
+													</p>
+													<p>IP : <span th:text="${server.app_server_ip}"></span></p>
+													<p>Port : <span th:text="${server.app_server_port}"></span></p>
+													<p>Tag Name : <span th:text="${server.app_server_tag_name}"></span></p>
+
+												</div>
+											</ul></li>
+										<li><a data-toggle="collapse" href="#collapseExamplee9"
+											role="button" aria-expanded="false"
+											aria-controls="collapseExample9">
+											<img src="./static/images/tree-image/db.png"></a> 
+											<ul class="collapse" id="collapseExamplee9" th:each="server :${serverList}" th:if="${server.configuration_type} == 'DBC'">
+												<div class="para">
+													<p>DB/Version: <span th:text="${server.installed_db}"></span> / <span th:text="${server.db_version}"></span></p>
+													<p>DB URL : <span th:text="${server.server_ip}"></span>:<span th:text="${server.db_port}"></span>/<span th:text="${server.db_sid}"></span></p>
+													<p>DB Username : <span th:text="${server.app_server_username}"></span></p> 
+													<p>DB Password : <span th:text="${server.app_server_pwd}"></span></p>
+												</div>
+											</ul></li>
+									</ul></li>
+									
+									
+								<li><a data-toggle="collapse" href="#collapseExamplee3"
+									role="button" aria-expanded="false"
+									aria-controls="collapseExample3">
+									<img src="./static/images/tree-image/team.png"></a> 
+									<ul class="collapse" id="collapseExamplee3">
+										<li><a data-toggle="collapse" href="#collapseExample11"
+											role="button" aria-expanded="false"
+											aria-controls="collapseExample11">
+											<img src="./static/images/tree-image/lhs.png"></a> 
+												
+											<ul class="collapse" id="collapseExample11" th:each="team :${teamList}"  th:if="${team.team_name} == 'LHS'">
+												<div class="para">
+													<p>NAME : <span th:text="${team.resp_person_name}"></span></p>
+													<p>MOBILE : <span th:text="${team.resp_person_mobileno}"></span></p>
+													<p>EMAIL ID : <span th:text="${team.resp_person_email_id}"></span></p>
+												</div>
+											</ul></li>
+										<li><a data-toggle="collapse" href="#collapseExample12"
+											role="button" aria-expanded="false"
+											aria-controls="collapseExample10">
+											<img src="./static/images/tree-image/fgs.png"></a>
+												  
+											<ul class="collapse" id="collapseExample12" th:each="team :${teamList}" th:if="${team.team_name} == 'FGS'">
+												<div class="para" >
+													<p>NAME : <span th:text="${team.resp_person_name}"></span></p>
+													<p>MOBILE : <span th:text="${team.resp_person_mobileno}"></span></p>
+													<p>EMAIL ID : <span th:text="${team.resp_person_email_id}"></span></p>
+												</div>
+											</ul></li>
+									</ul></li>
+									
+									
+							</ul></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="./static/js/userProfile.js"></script>
+
+	<script type="text/javascript" src="./static/js/appAudit/appAudit.js"></script>
+</th:block>

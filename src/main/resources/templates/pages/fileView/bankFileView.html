@@ -1,0 +1,119 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout" th:with="title='Hello, template'">
+
+<th:block layout:fragment="content">
+	<div class="right-section">
+		<div class="container-fluid mt-3">
+			<div class="tab-section col-md-12 mt-3">
+				<ul class="nav nav-pills">
+					<li class="nav-item mr-5"
+						onclick="window.location.href='./bankFileView'"><a
+						class="nav-link active" data-toggle="pill" href="#"><p>Filing Return View</p></a></li>
+				</ul>
+			</div>
+			<div class="tab-content form-wrapper px-4 py-4">
+				<form id="bank_form" autocomplete="off"
+					enctype="multipart/form-data">
+					<div class="px-2 py-2">
+						<table class="table table-bordered table-striped mb-1 text-center">
+							<thead>
+								<th>Financial Year</th>
+								<th colspan="2">Quarter 1</th>
+								<th colspan="2">Quarter 2</th>
+								<th colspan="2">Quarter 3</th>
+								<th colspan="2">Quarter 4</th>
+							</thead>
+								<tbody>
+								<div th:if="${viewList1 != null && !viewList1.isEmpty()}" th:each="dataGrid : ${viewList1}">
+								
+								<tr style="font-weight: 600;">
+								<td rowspan="10"  th:text="${dataGrid.acc_year}"></td>
+								<td>From Date</td>
+								<td>To Date</td>
+								<td>From Date</td>
+								<td>To Date</td>
+								<td>From Date</td>
+								<td>To Date</td>
+								<td>From Date</td>
+								<td>To Date</td>
+								</tr>
+							<input type="hidden" id="year" th:value="${dataGrid.acc_year}">
+								<tr>
+								<td  th:each="dataGrid : ${viewList2}" th:if="${(dataGrid.quarter == 'Q1') && (dataGrid.acc_year == '2022-23')}" th:text ="${dataGrid.from_date}"></td>
+								<td  th:each="dataGrid : ${viewList2}" th:if="${(dataGrid.quarter == 'Q1') && (dataGrid.acc_year == '2022-23')}" th:text="${dataGrid.to_date}" ></td>
+								<td  th:each="dataGrid : ${viewList2}"   th:if="${(dataGrid.quarter == 'Q2') && (dataGrid.acc_year == '2022-23')}" th:text="${dataGrid.from_date}"></td>
+								<td  th:each="dataGrid : ${viewList2}"   th:if="${(dataGrid.quarter == 'Q2') && (dataGrid.acc_year == '2022-23')}"  th:text="${dataGrid.to_date}"></td>
+								<td  th:each="dataGrid : ${viewList2}" th:if="${(dataGrid.quarter == 'Q3') && (dataGrid.acc_year == '2022-23')}"  th:text="${dataGrid.from_date}"></td>
+								<td  th:each="dataGrid : ${viewList2}"  th:if="${(dataGrid.quarter == 'Q3') && (dataGrid.acc_year == '2022-23')}"  th:text="${dataGrid.to_date}"></td>
+								<td   th:each="dataGrid : ${viewList2}" th:if="${(dataGrid.quarter == 'Q4') && (dataGrid.acc_year == '2022-23')}" th:text="${dataGrid.from_date}"></td>
+								<td th:each="dataGrid : ${viewList2}"  th:if="${(dataGrid.quarter == 'Q4') && (dataGrid.acc_year == '2022-23')}"  th:text="${dataGrid.to_date}"></td>
+								</tr>
+								<tr>
+									<td colspan="8" style="background-color:#fff22c85; font-weight: 600;">Regular return</td>
+								</tr>
+								<tr style="font-weight: 600;">
+									<td colspan="2">Q1 Return Filling Date</td>
+									<td colspan="2">Q2 Return Filling Date</td>
+									<td colspan="2">Q3 Return Filling Date</td>
+									<td colspan="2">Q4 Return Filling Date</td>
+								</tr>
+								<tr style="font-weight: 600;">
+									<td>From Date</td>
+									<td>To Date</td>
+									<td>From Date</td>
+									<td>To Date</td>
+									<td>From Date</td>
+									<td>To Date</td>
+									<td>From Date</td>
+									<td>To Date</td>
+								</tr>
+								<tr>
+									<td th:each="dataGrid: ${viewList3}" th:if="${(dataGrid.quarter == 'Q1') && (dataGrid.acc_year == '2022-23')}" th:text="${dataGrid.from_date}"></td>
+									<td th:each="dataGrid: ${viewList3}" th:if="${(dataGrid.quarter == 'Q1') && (dataGrid.acc_year == '2022-23')}" th:text="${dataGrid.to_date}"></td>
+									<td th:each="dataGrid: ${viewList3}" th:if="${(dataGrid.quarter == 'Q2') && (dataGrid.acc_year == '2022-23')}" th:text="${dataGrid.from_date}"></td>
+									<td th:each="dataGrid: ${viewList3}" th:if="${(dataGrid.quarter == 'Q2') && (dataGrid.acc_year == '2022-23')}" th:text="${dataGrid.to_date}"></td>
+									<td th:each="dataGrid: ${viewList3}" th:if="${(dataGrid.quarter == 'Q3') && (dataGrid.acc_year == '2022-23')}" th:text="${dataGrid.from_date}"></td>
+									<td th:each="dataGrid: ${viewList3}" th:if="${(dataGrid.quarter == 'Q3') && (dataGrid.acc_year == '2022-23')}" th:text="${dataGrid.to_date}"></td>
+									<td th:each="dataGrid: ${viewList3}" th:if="${(dataGrid.quarter == 'Q4') && (dataGrid.acc_year == '2022-23')}" th:text="${dataGrid.from_date}"></td>
+									<td th:each="dataGrid: ${viewList3}" th:if="${(dataGrid.quarter == 'Q4') && (dataGrid.acc_year == '2022-23')}" th:text="${dataGrid.to_date}"></td>
+									</tr>
+								
+								<tr>
+									<td colspan="8" style="background-color: #6d97e091; font-weight: 600;">15 G/H Return</td>
+								</tr>
+								<tr style="font-weight: 600;">
+									<td colspan="2">15 G/H Return Filling Date</td>
+									<td colspan="2">15 G/H Return Filling Date</td>
+									<td colspan="2">15 G/H Return Filling Date</td>
+									<td colspan="2">15 G/H Return Filling Date</td>
+								</tr>
+								<tr style="font-weight: 600;">
+									<td>From Date</td>
+									<td>To Date</td>
+									<td>From Date</td>
+									<td>To Date</td>
+									<td>From Date</td>
+									<td>To Date</td>
+									<td>From Date</td>
+									<td>To Date</td>
+								</tr>
+								<tr style="border-bottom:2px solid black;">
+									<td  th:each="dataGrid: ${viewList4}" th:if="${(dataGrid.quarter == 'Q1') && (dataGrid.acc_year == '2022-23')}" th:text="${dataGrid.from_date}"></td>
+									<td  th:each="dataGrid: ${viewList4}" th:if="${(dataGrid.quarter == 'Q1') && (dataGrid.acc_year == '2022-23')}" th:text="${dataGrid.to_date}"></td>
+									<td  th:each="dataGrid: ${viewList4}" th:if="${(dataGrid.quarter == 'Q2') && (dataGrid.acc_year == '2022-23')}" th:text="${dataGrid.from_date}"></td>
+									<td  th:each="dataGrid: ${viewList4}" th:if="${(dataGrid.quarter == 'Q2') && (dataGrid.acc_year == '2022-23')}" th:text="${dataGrid.to_date}"></td>
+									<td  th:each="dataGrid: ${viewList4}" th:if="${(dataGrid.quarter == 'Q3') && (dataGrid.acc_year == '2022-23')}" th:text="${dataGrid.from_date}"></td>
+									<td  th:each="dataGrid: ${viewList4}" th:if="${(dataGrid.quarter == 'Q3') && (dataGrid.acc_year == '2022-23')}" th:text="${dataGrid.to_date}"></td>
+									<td  th:each="dataGrid: ${viewList4}" th:if="${(dataGrid.quarter == 'Q4') && (dataGrid.acc_year == '2022-23')}" th:text="${dataGrid.from_date}"></td>
+									<td  th:each="dataGrid: ${viewList4}" th:if="${(dataGrid.quarter == 'Q4') && (dataGrid.acc_year == '2022-23')}" th:text="${dataGrid.to_date}"></td>
+								</tr>
+                                </div>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</th:block>

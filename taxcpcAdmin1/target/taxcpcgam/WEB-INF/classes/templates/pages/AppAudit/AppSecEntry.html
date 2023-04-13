@@ -1,0 +1,242 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout" th:with="title='Hello, template'">
+
+<th:block layout:fragment="content">
+<link href="./static/stylesheets/dashboard/dashboard.css" rel="stylesheet" />
+	<link href="./static/stylesheets/importantUrl/importantUrl.css" rel="stylesheet" />
+	
+	<div class="right-section">	
+	
+          <div class="header-gap"></div>
+		<div class="header-gap"></div> 
+		    <div class="container-fluid mt-3">
+		 	<div class="tab-section col-md-12">
+	        <ul class="nav nav-pills">
+	         <li class="nav-item mr-5" onclick="window.location.href='./AppSecEntry'"><a class="nav-link" data-toggle="pill" href="#"><p>AppSec Entry </p></a></li>
+			</ul>
+			
+			</div>
+					
+					 	<div class="clearfix"></div>
+					 	<div class="clearfix"></div>
+					 	<div class="tab-content form-wrapper px-4 py-4">
+		 	<input type="hidden" id="action" name="action" th:value="${action}" />
+		   <input type="hidden" id="seq_id" name="seq_id" th:value="${seq_id}" />
+		 	
+           <form id="AppSecEntryForm" autocomplete="off" th:object="${appList}" enctype="multipart/form-data">
+           
+	
+					 	
+					 	<div class="row form-group">
+                        <div class="col-lg-4 col-xl-4 text-right">
+							<label class="control-label">Application Name<span
+								class="text-danger font-weight-bold ml-1"></span>
+							</label>
+						</div>
+						<div class="col-lg-7 col-xl-4">
+						<input type="text" class="form-control" id="audit_applied_app_name"  name="audit_applied_app_name" th:value="${appList.audit_applied_app_name}" th:text="${audit_applied_app_name!= null ? appList.audit_applied_app_name: ''}" />	
+						</div>
+						</div>
+					 	
+						<div class="row form-group">
+						<div class="col-lg-4 col-xl-4 text-right">
+							<label class="control-label">Bank/Entity Type<span
+								class="text-danger font-weight-bold ml-1">*</span>
+							</label>
+						</div>
+						<div class="col-lg-7 col-xl-4">
+						<select class="form-control" id="entity_code" name="entity_code">
+							<option value="">--Select Bank/Entity Type--</option>
+							<option th:each="project : ${entityList.entrySet()}"
+									th:value="${project.key}" th:text="${project.value}"
+									th:selected="${appList!= null && appList.entity_code != null && appList.entity_code.contains(project.key)}"></option>
+							</select>
+						</div>
+							</div>	
+							
+						
+					
+						<div class="row form-group">
+					   <div class="col-lg-4 col-xl-4 text-right">
+							<label class="control-label">AppSec  Header<span
+								class="text-danger font-weight-bold ml-1">*</span>
+							</label>
+						</div>
+						<div class="col-lg-7 col-xl-4">
+						<input type="text" class="form-control" id="audit_name" name="audit_name"  th:value="${appList.audit_name}" th:text="${audit_name != null ? appList.audit_name: ''}" />	
+						</div>
+						</div>
+						
+						
+						<div class="row form-group">
+						<div class="col-lg-4 col-xl-4 text-right">
+							<label class="control-label">AppSec Description<span
+								class="text-danger font-weight-bold ml-1">*</span>
+							</label>
+						</div>
+						<div class="col-lg-7 col-xl-4">
+						 <textarea class="form-control" rows="10" id="audit_description" name="audit_description"  
+						 th:value="${appList.audit_description}"  
+						 th:text="${appList != null ? appList.audit_description : ''}" ></textarea>
+						
+						</div>
+						</div>
+						
+						<div class="row form-group">
+                        <div class="col-lg-4 col-xl-4 text-right">
+							<label class="control-label">No Of  Occurrences<span
+								class="text-danger font-weight-bold ml-1"></span>
+							</label>
+						</div>
+						<div class="col-lg-7 col-xl-4">
+
+						<input type="text" class="form-control"  id="no_of_occurences" name="no_of_occurences"  
+						 th:value="${appList.no_of_occurences}"  
+						 />	
+
+						</div>
+						</div>
+						
+						<div class="row form-group">
+						<div class="col-lg-4 col-xl-4 text-right">
+							<label class="file">Attachment<span
+								class="text-danger font-weight-bold ml-1"></span>
+							</label>
+						</div>
+						<div class="col-lg-7 col-xl-4">
+						 <div class="custom-file" >
+							<input type="file" class="form-control" id="doc_file"   name="doc_file" th:text="${docfile}">
+							
+						 </div>
+						</div>
+						</div>
+						
+						
+					<div class="row form-group">
+						<div class="col-lg-4 col-xl-4 text-right">
+							<label class="control-label">External Link<span
+								class="text-danger font-weight-bold ml-1"></span>
+							</label>
+						</div>
+
+						<div class="col-lg-7 col-xl-4">
+								<div class="file">
+									<input type="link" class="form-control"  id="audit_ext_link" name="audit_ext_link"   th:value="${appList.audit_ext_link}" th:text="${audit_ext_link != null ? appList.audit_ext_link: ''}"> 
+								</div>
+						</div>
+						</div>
+										
+												
+				    	
+						<div class="row form-group">
+	                 <div class="col-lg-4 col-xl-4 text-right">
+							<label class="control-label">Applied Region <span
+								class="text-danger font-weight-bold ml-1"></span>
+							</label>
+						</div>
+						<div class="col-lg-7 col-xl-4">
+						<input type="text" class="form-control" id="audit_applied_region" name="audit_applied_region" th:value="${appList.audit_applied_region}" th:text="${audit_applied_region!= null ? appList.audit_applied_region: ''}"/>	
+						</div>
+						</div>
+						
+					
+						
+						
+					  <div class="row form-group">
+                       <div class="col-lg-4 col-xl-4 text-right">
+							<label class="control-label">Server IP<span
+								class="text-danger font-weight-bold ml-1"></span>
+							</label>
+						</div>
+						<div class="col-lg-7 col-xl-4">
+						<input type="text" class="form-control"  id="audit_applied_server_ip" name="audit_applied_server_ip" 
+						onblur="ValidateIP(this);" th:value="${appList.audit_applied_server_ip}" th:text="${audit_applied_server_ip!= null ? appList.audit_applied_server_ip: ''}"/>
+						
+						</div>
+						</div>
+						
+					
+						
+					 <div class="row form-group">
+                      <div class="col-lg-4 col-xl-4 text-right">
+							<label class="control-label">Other<span
+								class="text-danger font-weight-bold ml-1"></span>
+							</label>
+						</div>
+						<div class="col-lg-7 col-xl-4">
+						<input type="text" class="form-control" id="other_info" name="other_info" th:value="${appList.other_info}" th:text="${other_info!= null ? appList.other_info: ''}" />	
+						</div>
+						</div>
+						<div id="resolve">
+						<div class="row form-group" >
+                      <div class="col-lg-4 col-xl-4 text-right">
+							<label class="control-label">Resolve Remark<span
+								class="text-danger font-weight-bold ml-1">*</span>
+							</label>
+						</div>
+						<div class="col-lg-7 col-xl-4">
+						<input type="text" class="form-control" id="audit_resolve_remark" name="audit_resolve_remark" th:text="${audit_resolve_remark!= null ? appList.audit_resolve_remark: ''}"/>	
+						</div>
+						</div>
+						<div class="row form-group" >
+                      <div class="col-lg-4 col-xl-4 text-right">
+							<label class="control-label">Resolve Reference<span
+								class="text-danger font-weight-bold ml-1"></span>
+							</label>
+						</div>
+						<div class="col-lg-7 col-xl-4">
+						<input type="text" class="form-control" id="audit_resolve_reference" name="audit_resolve_reference"  th:text="${audit_resolve_reference!= null ? appList.audit_resolve_reference: ''}"/>	
+						</div>
+						</div>
+						<div class="row form-group" >
+                      <div class="col-lg-4 col-xl-4 text-right">
+							<label class="control-label">Resolve Attachment<span
+								class="text-danger font-weight-bold ml-1"></span>
+							</label>
+						</div>
+						<div class="col-lg-7 col-xl-4">
+						<input type="file" class="form-control"  id="file_attach" name="file_attach"/>	
+						</div>
+						</div>
+						</div>
+						
+						<div class="row">
+	                    <div class="col-md-4 offset-md-4">
+	                        <div class="form-group  text-center">
+								<button type="button" class="form-btn"
+									onclick="saveAuditWork();" id="save">
+									<i class="fa fa-floppy-o" aria-hidden="true"></i><span
+										th:if="${action != null && action == 'save'}">Save
+										& Exit</span>
+								</button>
+								<button type="button" class="form-btn"
+									onclick="UpdateAuditWork();" id="update">
+									<i class="fa fa-floppy-o" aria-hidden="true"></i><span
+										th:if="${action != null && action == 'edit'}">Update</span>
+								</button>
+								<button type="button" class="form-btn" id="reset">
+							Reset <i class="fa refresh" aria-hidden="true"></i>
+						</button>
+						<button type="button" class="form-btn"  onclick="window.location.href='./AppAuditEntry'">
+							<i class="fa fa-arrow-left" aria-hidden="true"></i>Back
+						</button>
+
+					</div>               
+	                    </div>
+	                     </div>
+	                      </form>	
+	               
+	                </div>	
+	              			
+					</div>	
+							
+</div>
+
+<script type="text/javascript" src="./static/js/appAudit/appAudit.js"></script>
+<script>
+onLoadData();
+</script>
+
+</th:block>
+</html>

@@ -1,0 +1,68 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout" th:with="title='Hello, template'">
+
+<th:block layout:fragment="content">
+	<link />
+	<link href="./static/stylesheets/importantUrl/importantUrl.css"
+		rel="stylesheet" />
+	<div class="right-section">
+		<div class="header-gap"></div>
+		<div class="header-gap"></div>
+		<div class="tab-section col-md-12">
+			<ul class="nav nav-pills">
+				<li class="nav-item mr-5"><a class="nav-link active"
+					data-toggle="pill" href="#"
+					onclick="window.location.href='./AppAuditDiscription'"><p>Application
+							Audit Discription</p> </a></li>
+				<li class="nav-item mr-5"><a class="nav-link"
+					data-toggle="pill" href="#"
+					onclick="window.location.href='./appAuditDashboard'"><p>Application
+							Audit Dashboard</p> </a></li>
+			</ul>
+			<div class="clearfix"></div>
+		</div>
+
+		<div class="tab-content form-wrapper px-4 py-4">
+			<form id="">
+
+				<div class="media p-3 kpi bg-white">
+
+
+
+					<div
+						class="kpi-icon position-relative mx-3 d-flex align-self-center justify-content-center align-items-center">
+
+
+
+
+
+					</div>
+
+
+				</div>
+
+
+			</form>
+
+
+
+
+
+
+		</div>
+	</div>
+
+
+
+
+	<script type="text/javascript" src="./static/js/appAudit/appAudit.js"></script>
+
+
+	<script>
+		loadDataUsingPaginator('AuditDashboard');
+		onLoadFunction();
+	</script>
+
+
+</th:block>
